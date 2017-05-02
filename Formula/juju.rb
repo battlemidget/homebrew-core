@@ -1,8 +1,11 @@
+require "language/go"
+
 class Juju < Formula
   desc "DevOps management tool"
   homepage "https://jujucharms.com/"
   url "https://launchpad.net/juju/2.1/2.1.2/+download/juju-core_2.1.2.tar.gz"
   sha256 "fba57c0913f77b89f0dc2c73a7c70ebac5263dfb3a014c4f40551beae0a6fd21"
+  head "https://github.com/juju/juju.git", :branch => "develop"
 
   bottle do
     cellar :any_skip_relocation
@@ -12,18 +15,43 @@ class Juju < Formula
   end
 
   devel do
-    url "https://launchpad.net/juju/2.2/2.2-beta1/+download/juju-core_2.2-beta1.tar.gz"
-    sha256 "1f0a27c13c19521f938f703c6f797a682d33f88f1c58c7826040388c192d43a8"
-    version "2.2-beta1"
+    url "https://launchpad.net/juju/2.2/2.2-beta3/+download/juju-core_2.2-beta3.tar.gz"
+    sha256 "0d041cfa97224cf659444bfe42d16e63c8c4b5e0a3605162a43295b5b0ca0a86"
+    version "2.2-beta3"
   end
 
   depends_on "go" => :build
+  depends_on "bazaar" => :build
+
+  go_resource "github.com/kisielk/gotool" do
+    url "https://github.com/kisielk/gotool.git",
+        :revision => "0de1eaf82fa3f583ce21fde859f1e7e0c5e9b220"
+  end
+
+  go_resource "github.com/rogpeppe/godeps" do
+    url "https://github.com/rogpeppe/godeps.git",
+        :revision => "e0581207fc59197e6caa4dc03f425fdca872c4a7"
+  end
 
   def install
     ENV["GOPATH"] = buildpath
-    system "go", "build", "github.com/juju/juju/cmd/juju"
-    system "go", "build", "github.com/juju/juju/cmd/plugins/juju-metadata"
-    bin.install "juju", "juju-metadata"
+    ENV['GOBIN'] = bin
+    if build.devel? || build.head?
+      dir = buildpath/"src/github.com/juju/juju"
+      ENV.prepend_create_path "PATH", buildpath/"bin"
+      Language::Go.stage_deps resources, buildpath/"src"
+      cd("src/github.com/rogpeppe/godeps") { system "go", "install" }
+      cd dir do
+        system "godeps", "-x", "-u", "dependencies.tsv"
+        system "go", "build", "github.com/juju/juju/cmd/juju"
+        system "go", "build", "github.com/juju/juju/cmd/jujud"
+        bin.install "juju"
+        bin.install "jujud"
+      end
+    else
+      system "go", "install", "-v", "github.com/juju/juju/cmd/juju"
+      system "go", "install", "-v", "github.com/juju/juju/cmd/plugins/juju-metadata"
+    end
     bash_completion.install "src/github.com/juju/juju/etc/bash_completion.d/juju"
   end
 
