@@ -5,6 +5,7 @@ class ConjureUp < Formula
   homepage "https://conjure-up.io/"
   url "https://github.com/conjure-up/conjure-up/archive/2.4.0.tar.gz"
   sha256 "32dddb4d656b882a532eeed80833afffeebf58f0ce5f87f89f0d08124d23a3b4"
+  revision 1
 
   bottle do
     cellar :any
@@ -20,6 +21,7 @@ class ConjureUp < Formula
   depends_on "wget"
   depends_on "redis"
   depends_on "awscli"
+  depends_on "pwgen"
 
   # list generated from the 'requirements.txt' file in the repository root
   resource "aiofiles" do
@@ -214,6 +216,8 @@ class ConjureUp < Formula
 
   def install
     virtualenv_install_with_resources
+    bin.install_symlink "#{libexec}/bin/chlp" => "chlp"
+    bin.install_symlink "#{libexec}/bin/juju-wait" => "juju-wait"
   end
 
   test do
