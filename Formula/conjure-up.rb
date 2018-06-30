@@ -28,19 +28,9 @@ class ConjureUp < Formula
     sha256 "6c4936cea65175277183553dbc27d08b286a24ae5bd86f44fbe485dfcf77a14a"
   end
 
-  resource "bundle-placement" do
-    url "https://files.pythonhosted.org/packages/7f/f3/635ef95ac9afb049e721774acbbda39a1a9d2963b10c08cded15bf09ae43/bundle-placement-0.0.2.tar.gz"
-    sha256 "3ee288c0d5b889d1a9e04d1c09c9527b471b57a7df1f4898cebb990a6a967b05"
-  end
-
   resource "certifi" do
     url "https://files.pythonhosted.org/packages/4d/9c/46e950a6f4d6b4be571ddcae21e7bc846fcbb88f1de3eff0f6dd0a6be55d/certifi-2018.4.16.tar.gz"
     sha256 "13e698f54293db9f89122b0581843a782ad0934a4fe0172d2a980ba77fc61bb7"
-  end
-
-  resource "cffi" do
-    url "https://files.pythonhosted.org/packages/e7/a7/4cd50e57cc6f436f1cc3a7e8fa700ff9b8b4d471620629074913e3735fb2/cffi-1.11.5.tar.gz"
-    sha256 "e90f17980e6ab0f3c2f3730e56d1fe9bcba1891eeea58966e89d352492cc74f4"
   end
 
   resource "chardet" do
@@ -53,19 +43,14 @@ class ConjureUp < Formula
     sha256 "a26b5c973df792ecfc1fc6b18cf696ccaf4c02c918b2878e81c6d495debaa340"
   end
 
-  resource "idna" do
-    url "https://files.pythonhosted.org/packages/f4/bd/0467d62790828c23c47fc1dfa1b1f052b24efdf5290f071c7a91d0d82fd3/idna-2.6.tar.gz"
-    sha256 "2c6a5de3089009e3da7c5dde64a141dbc8551d5b7f6cf4ed7c2568d0cc520a8f"
-  end
-
   resource "Jinja2" do
     url "https://files.pythonhosted.org/packages/90/61/f820ff0076a2599dd39406dcb858ecb239438c02ce706c8e91131ab9c7f1/Jinja2-2.9.6.tar.gz"
     sha256 "ddaa01a212cd6d641401cb01b605f4a4d9f37bfc93043d7f760ec70fb99ff9ff"
   end
 
   resource "juju" do
-    url "https://files.pythonhosted.org/packages/fa/6b/04751c78e333880d888049c5c704706986c187763095c099c6a8e618fe04/juju-0.7.5.tar.gz"
-    sha256 "9ff2bccd328c364af5efe8aa00b5041bd9ff65111c69448220cea35bffcb3f20"
+    url "https://files.pythonhosted.org/packages/c7/c0/a315341dc251a9f2e9dfe32a8b9f1667a15c80be8e1396fdd35e6617b4c9/juju-0.9.0.tar.gz"
+    sha256 "8726a58d5d68c49a2d3589566db33b8686cd85779e09739c2db03fd70e72f185"
   end
 
   resource "juju-wait" do
@@ -123,19 +108,9 @@ class ConjureUp < Formula
     sha256 "44746540c0fab5b95401520d29eb9ffe84b3b4a235bd1d1971cbe36e1f38dd13"
   end
 
-  resource "pycparser" do
-    url "https://files.pythonhosted.org/packages/8c/2d/aad7f16146f4197a11f8e91fb81df177adcc2073d36a17b1491fd09df6ed/pycparser-2.18.tar.gz"
-    sha256 "99a8ca03e29851d96616ad0404b4aad7d9ee16f25c9f9708a11faf2810f7b226"
-  end
-
   resource "pymacaroons" do
     url "https://files.pythonhosted.org/packages/37/b4/52ff00b59e91c4817ca60210c33caf11e85a7f68f7b361748ca2eb50923e/pymacaroons-0.13.0.tar.gz"
     sha256 "1e6bba42a5f66c245adf38a5a4006a99dcc06a0703786ea636098667d42903b8"
-  end
-
-  resource "PyNaCl" do
-    url "https://files.pythonhosted.org/packages/08/19/cf56e60efd122fa6d2228118a9b345455b13ffe16a14be81d025b03b261f/PyNaCl-1.2.1.tar.gz"
-    sha256 "e0d38fa0a75f65f556fb912f2c6790d1fa29b7dd27a1d9cc5591b281321eaaa9"
   end
 
   resource "pyRFC3339" do
@@ -159,8 +134,8 @@ class ConjureUp < Formula
   end
 
   resource "PyYAML" do
-    url "https://files.pythonhosted.org/packages/4a/85/db5a2df477072b2902b0eb892feb37d88ac635d36245a72a6a69b23b383a/PyYAML-3.12.tar.gz"
-    sha256 "592766c6303207a20efc445587778322d7f73b161bd994f227adaa341ba212ab"
+    url "https://github.com/yaml/pyyaml/archive/4.2b2.tar.gz"
+    sha256 "2d3ccbb9705eceaf36e495cfaba30277a59aa3f0a5e3c8cfffe760d89625e3d2"
   end
 
   resource "raven" do
@@ -181,11 +156,6 @@ class ConjureUp < Formula
   resource "sh" do
     url "https://files.pythonhosted.org/packages/d8/97/39aa189a8392522cc24f14f392955cbeac48e2818d776241c37eb6d0eb3c/sh-1.12.13.tar.gz"
     sha256 "979928ca113cade663bb1a0ff710e3eb9147596cf28a7ee4c04f9d85804f7b9f"
-  end
-
-  resource "six" do
-    url "https://files.pythonhosted.org/packages/16/d8/bc6316cf98419719bd59c91742194c111b6f2e85abac88e496adefaf7afe/six-1.11.0.tar.gz"
-    sha256 "70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9"
   end
 
   resource "termcolor" do
@@ -214,13 +184,58 @@ class ConjureUp < Formula
   end
 
   resource "websockets" do
-    url "https://files.pythonhosted.org/packages/b6/12/6194aac840c65253e45a38912e318f9ac548f9ba86d75bdb8fe66841b335/websockets-4.0.1.tar.gz"
-    sha256 "da4d4fbe059b0453e726d6d993760065d69b823a27efc3040402a6fcfe6a1ed9"
+    url "https://github.com/battlemidget/websockets/archive/5.0.1_1.tar.gz"
+    sha256 "0d3b8bb2ae266831695b1d157830fea42409628c48c75b9956f74d4b1a6815a1"
   end
 
-  resource "ws4py" do
-    url "https://files.pythonhosted.org/packages/aa/60/5d135c8161a2a67d7c227d57bb599fad967d818dbcdca08daa2d60eb87b9/ws4py-0.3.4.tar.gz"
-    sha256 "85d5c01bb0d031e151a32fad56094caf54e20c2ddb51cf25b5709421ff92d007"
+  resource "asn1crypto" do
+    url "https://files.pythonhosted.org/packages/fc/f1/8db7daa71f414ddabfa056c4ef792e1461ff655c2ae2928a2b675bfed6b4/asn1crypto-0.24.0.tar.gz"
+    sha256 "9d5c20441baf0cb60a4ac34cc447c6c189024b6b4c6cd7877034f4965c464e49"
+  end
+
+  resource "bcrypt" do
+    url "https://files.pythonhosted.org/packages/f3/ec/bb6b384b5134fd881b91b6aa3a88ccddaad0103857760711a5ab8c799358/bcrypt-3.1.4.tar.gz"
+    sha256 "67ed1a374c9155ec0840214ce804616de49c3df9c5bc66740687c1c9b1cd9e8d"
+  end
+
+  resource "cffi" do
+    url "https://files.pythonhosted.org/packages/e7/a7/4cd50e57cc6f436f1cc3a7e8fa700ff9b8b4d471620629074913e3735fb2/cffi-1.11.5.tar.gz"
+    sha256 "e90f17980e6ab0f3c2f3730e56d1fe9bcba1891eeea58966e89d352492cc74f4"
+  end
+
+  resource "cryptography" do
+    url "https://files.pythonhosted.org/packages/ec/b2/faa78c1ab928d2b2c634c8b41ff1181f0abdd9adf9193211bd606ffa57e2/cryptography-2.2.2.tar.gz"
+    sha256 "9fc295bf69130a342e7a19a39d7bbeb15c0bcaabc7382ec33ef3b2b7d18d2f63"
+  end
+
+  resource "idna" do
+    url "https://files.pythonhosted.org/packages/f4/bd/0467d62790828c23c47fc1dfa1b1f052b24efdf5290f071c7a91d0d82fd3/idna-2.6.tar.gz"
+    sha256 "2c6a5de3089009e3da7c5dde64a141dbc8551d5b7f6cf4ed7c2568d0cc520a8f"
+  end
+
+  resource "paramiko" do
+    url "https://files.pythonhosted.org/packages/29/65/83181630befb17cd1370a6abb9a87957947a43c2332216e5975353f61d64/paramiko-2.4.1.tar.gz"
+    sha256 "33e36775a6c71790ba7692a73f948b329cf9295a72b0102144b031114bd2a4f3"
+  end
+
+  resource "pyasn1" do
+    url "https://files.pythonhosted.org/packages/0d/33/3466a3210321a02040e3ab2cd1ffc6f44664301a5d650a7e44be1dc341f2/pyasn1-0.4.3.tar.gz"
+    sha256 "fb81622d8f3509f0026b0683fe90fea27be7284d3826a5f2edf97f69151ab0fc"
+  end
+
+  resource "pycparser" do
+    url "https://files.pythonhosted.org/packages/8c/2d/aad7f16146f4197a11f8e91fb81df177adcc2073d36a17b1491fd09df6ed/pycparser-2.18.tar.gz"
+    sha256 "99a8ca03e29851d96616ad0404b4aad7d9ee16f25c9f9708a11faf2810f7b226"
+  end
+
+  resource "PyNaCl" do
+    url "https://files.pythonhosted.org/packages/08/19/cf56e60efd122fa6d2228118a9b345455b13ffe16a14be81d025b03b261f/PyNaCl-1.2.1.tar.gz"
+    sha256 "e0d38fa0a75f65f556fb912f2c6790d1fa29b7dd27a1d9cc5591b281321eaaa9"
+  end
+
+  resource "six" do
+    url "https://files.pythonhosted.org/packages/b3/b2/238e2590826bfdd113244a40d9d3eb26918bd798fc187e2360a8367068db/six-1.10.0.tar.gz"
+    sha256 "105f8d68616f8248e24bf0e9372ef04d3cc10104f1980f54d57b2ce73a5ad56a"
   end
 
   def install
