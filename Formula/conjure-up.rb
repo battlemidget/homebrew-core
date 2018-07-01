@@ -3,8 +3,8 @@ class ConjureUp < Formula
 
   desc "Big software deployments so easy it's almost magical"
   homepage "https://conjure-up.io/"
-  url "https://github.com/conjure-up/conjure-up/archive/2.5.7.tar.gz"
-  sha256 "d40e72aab4972c0477402436d3010f51af783357e33844f279f03987fc419b86"
+  url "https://github.com/conjure-up/conjure-up/archive/2.5.9.tar.gz"
+  sha256 "f474a7419fb0f948ea1cb16c14e229002a67339187b0a9af3e093f97e5ff309a"
 
   bottle do
     cellar :any
@@ -193,14 +193,14 @@ class ConjureUp < Formula
     sha256 "9d5c20441baf0cb60a4ac34cc447c6c189024b6b4c6cd7877034f4965c464e49"
   end
 
-  resource "bcrypt" do
-    url "https://files.pythonhosted.org/packages/f3/ec/bb6b384b5134fd881b91b6aa3a88ccddaad0103857760711a5ab8c799358/bcrypt-3.1.4.tar.gz"
-    sha256 "67ed1a374c9155ec0840214ce804616de49c3df9c5bc66740687c1c9b1cd9e8d"
-  end
-
   resource "cffi" do
     url "https://files.pythonhosted.org/packages/e7/a7/4cd50e57cc6f436f1cc3a7e8fa700ff9b8b4d471620629074913e3735fb2/cffi-1.11.5.tar.gz"
     sha256 "e90f17980e6ab0f3c2f3730e56d1fe9bcba1891eeea58966e89d352492cc74f4"
+  end
+
+  resource "bcrypt" do
+    url "https://files.pythonhosted.org/packages/f3/ec/bb6b384b5134fd881b91b6aa3a88ccddaad0103857760711a5ab8c799358/bcrypt-3.1.4.tar.gz"
+    sha256 "67ed1a374c9155ec0840214ce804616de49c3df9c5bc66740687c1c9b1cd9e8d"
   end
 
   resource "cryptography" do
@@ -239,7 +239,14 @@ class ConjureUp < Formula
   end
 
   def install
-    virtualenv_install_with_resources
+    venv = virtualenv_create(libexec, "python3")
+    venv.pip_install resource("cffi") # needs to be installed prior to bcrypt
+    res = resources.map(&:name).to_set - ["cffi"]
+
+    res.each do |r|
+      venv.pip_install resource(r)
+    end
+    venv.pip_install_and_link buildpath
     bin.install_symlink "#{libexec}/bin/kv-cli"
   end
 
