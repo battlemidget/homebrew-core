@@ -235,7 +235,7 @@ class ConjureUp < Formula
 
   resource "websockets" do
     url "https://github.com/battlemidget/websockets/archive/5.0.1_1.tar.gz"
-    version "5.0.1_1"
+    version "5.0.1-1"
     sha256 "0d3b8bb2ae266831695b1d157830fea42409628c48c75b9956f74d4b1a6815a1"
   end
 
